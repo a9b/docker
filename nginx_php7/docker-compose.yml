@@ -1,0 +1,9 @@
+nginx: 
+  build: ./nginx
+  ports: 
+    - "80:80"
+  links: 
+    - php7
+
+php7: 
+  build: ./php7
