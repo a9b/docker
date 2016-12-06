@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  proxy:
+    build: ./proxy
+    links:
+      - swittt-nginx
+    ports:
+      - "80:80"
+  
+  swittt-nginx:
+    build: ./nginx
+    ports: 
+      - "8080:8080"
+    links: 
+      - swittt-php7
+  
+  swittt-php7: 
+    build: ./php7
+    links: 
+      - swittt-redis
+  
+  swittt-redis:
+    image: redis:latest
+  
+  swittt-busybox:
+    image: busybox:latest
